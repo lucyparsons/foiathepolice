@@ -15,7 +15,9 @@ a different tip or trick used when we sent the FOIA. While they may be subsets o
 
 # Design
 
-The current text is being created using the [Twine](http://twinery.org) library for interactive, non-linear story telling. 
+The interactive webapp is being mocked up using the [Twine](http://twinery.org) library for interactive, non-linear story telling.
+
+![interactive story](images/FTPolice.gif)
 
 # Historical Record
 
