@@ -8,9 +8,7 @@
 
 # High Level Overview
 
-First we should different topics of policing that the public might be interesting in FOIAing. **NOTE:** Each line represents a different request _and_
-a different tip or trick used when we sent the FOIA. While they may be subsets of the same topic, each request is unique. 
-
+First we should different topics of policing that the public might be interesting in FOIAing. We also add information about FOIA in general and how to fight back against exemptions.
 ![architectural overview](images/FOIAthePoliceHighLevel.png)
 
 # Design
