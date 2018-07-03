@@ -1,0 +1,20 @@
+<script src="assets/js/lottie_light.min.js"></script><nav><span class="toggle-button"> <div class="menu-bar menu-bar-top"></div><div class="menu-bar menu-bar-middle"></div><div class="menu-bar menu-bar-bottom"></div></span><div class="menu-wrap"> <div class="menu-sidebar"> <ul class="menu"> <li><a href="index.html">Home</a></li><li><a href="#">About</a></li><li><a href="#">Link 3</a></li></li><li><a href="#">Link 4</a></li><li><a href="#">More Links</a></li></ul></div></div></nav><div class="paperpagecover"><div/><div class="bodymovin animcanvas" data-bm-path="assets/js/foia-paper-anim2.json" data-bm-renderer="svg" data-bm-name="paperanim" data-bm-autoplay="false"></div><header><h1>F<span id="baff">OIA</span> the Police</h1><img id="paperover" onClick="javascript:runPaperAnim()" src="pg4c.svg"></header><header-bg></header-bg><section id="mainsection"><h2>(print: (passage:)'s name)</h2><script>
+/* Paper Animation Handler*/
+var isPlaying = false;
+
+lottie.onComplete = function(){
+	lottie.stop('paperanim')
+	isPlaying = false;
+}
+
+function runPaperAnim(){
+	console.log('clicked')
+	if(isPlaying){
+		lottie.stop('paperanim');
+		isPlaying = false;
+	}
+	lottie.play('paperanim')
+	isPlaying = true;
+}
+
+</script>
