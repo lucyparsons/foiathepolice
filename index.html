@@ -11,97 +11,350 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="F[oia]ThePolice" startnode="1" creator="Twine" creator-version="2.2.1" ifid="BC491AE1-4819-4F28-9D93-BD986C446ED3" zoom="0.6" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/* Overrider some Harlowe defaults. */
-html {
-	background: white;
-	color: white;
-	font: medium "Times New Roman", Times, serif;
-	padding: 8px;
+<tw-storydata name="F[oia]ThePolice" startnode="1" creator="Twine" creator-version="2.2.1" ifid="BC491AE1-4819-4F28-9D93-BD986C446ED3" zoom="0.6" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:100,300,400,700,900');
+
+html{margin:0;padding:0;height:100%;background-color: #EFE6FF !important;}
+
+::before, ::after{  position:static !important;}
+
+header{
+  position:fixed;
+  top:0;
+  height: 8em;
+  width: 100%;
+  z-index:999;
 }
+
+header img{
+  border-style: none;
+  position:fixed !important;
+  top:-10px;
+  right:0;
+  z-index:990;
+  width:70%;
+}
+
+h1{
+  z-index:995;
+  display:inline-block;
+}
+
+h2{
+  font-weight: 300;
+  background-image:url('images/pat1-mult.svg');
+  background-repeat: repeat;
+  background-size: 150px 150px;
+  display:inline-block;
+}
+
+i{font-weight: 100;}
+
+header-bg{
+  z-index:666;
+  position:fixed;
+  top:0;
+  height: 15%;
+  width: 100%;
+  background-image:url('images/pat2r-mult.svg');
+  background-repeat: repeat;
+  background-size: 150px 150px;  
+  background-color:rgba(239,230,255,.75);
+}
+
+.animcanvas {
+  width:100%;
+  position:fixed !important;
+  top:0;
+  right:0;
+  z-index:666;
+  pointer-events: none;
+
+}
+
+#mainsection{
+  min-height: 100%;
+  position: relative;
+  padding-top:8em;
+  z-index:555
+}
+
+
+::selection {
+  background: #2E253D; 
+  color: #BFB8CC;
+}
+
+::-moz-selection {
+  background: #2E253D; 
+  color: #BFB8CC;
+}
+
+
+
+/* STORY NAV */
+tw-sidebar{
+  position: fixed;
+  top:2.5em;
+  margin: 1.5em; 
+  z-index:1000;
+  line-height: auto;
+  left: 0 !important;
+}
+
+tw-icon{
+  position: absolute;
+  background-color: #2E253D;
+  padding: 0;
+  margin: 0 auto !important;
+  width: 2.5em;
+  line-height: 2.5em;
+  font-size: 1em !important;
+  border-radius:.25em;
+}
+
+[title~="Forward"] {
+  margin:0 auto;
+  top: 3em;
+}
+
+[title~="Back"] {
+  margin:0 auto;
+}
+
+tw-link{
+  color:#5A4878;
+  border-bottom:#5A4878 1px dotted;
+}
+
+tw-link:hover{
+  color:#BE99FF;
+  border-bottom:#5A4878 2px solid;
+}
+
+/* ADD BUG TO OFFSITE LINKS */
+a[href^="http"], a[href^="mailto"] {
+  background: url("images/paper.svg") center right no-repeat;
+  padding-right: 1.25em;
+  color:#5A4878;
+  border-bottom:#5A4878 1px dotted;
+  text-decoration: none;
+}
+
+a[href^="http"]:hover, a[href^="mailto"]:hover {
+  background: url("images/arrow.svg") center right no-repeat;
+  padding-right: 1.25em;
+  color:#BE99FF;
+  border-bottom:#5A4878 1px solid;
+}
+
+
+img{
+  border: double 5px #2E253D;
+}
+
+section, header, #footsection{margin:0 6em !important;} /* traditional body padding here */
+
+/* Override some Harlowe defaults. */
+
+body{
+  font-family: 'Source Code Pro', monospace !important;
+  color: #2E253D !important;
+  margin: 0 0 100px;
+  background-color: #EFE6FF !important;
+}
+
 tw-story {
-	width: auto;
-	margin: 0;
-  	margin-left: 2rem;
-  	margin-right: 2rem;
-  	background-color: white;
-	color: black;
+  min-height: 100%;
+  position: relative;
+  width: auto;
+  font-family: 'Source Code Pro', monospace !important;
+  padding: 0 !important; 
+  background-color: #EFE6FF !important;
+  color: #2E253D !important;
 }
 tw-passage {
-	font-size: 0.7em;
-	line-height: 1.25em;
+  font-size: 0.7em;
+  line-height: 1.25em;
+  height: calc(100vh - 100px);
+  min-height: calc(100vh - 100px);
 }
 
-
-/* Style the content of the Title passage. */
+/* CONTENT OF TITLE PASSAGE */
 tw-include[title="Title"] {
-	display: block;
-	font-weight: bold;
-	margin-bottom: 0.5rem;
-	line-height: 1.5em;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1.5em;
 }
+
 tw-hook[name="storyTitle"] {
-	display: block;
-	font-size: 2rem;
+  display: block;
+  font-size: 2rem;
 }
+
 tw-hook[name="storyAuthor"] {
-	display: block;
-	font-size: medium;
+  display: block;
+  font-size: medium;
 }
+
 tw-hook[name="storyAuthor"]:before {
-	content: "by ";
+  content: "by ";
 }
+
 tw-hook[name="separator"] {
-	display: block;
-	height: 1px;
-	border: 1px inset;
-	margin: 0.5rem auto;
+  display: block;
+  height: 1px;
+  border: 1px inset;
+  margin: 0.5rem auto;
 }
+
 tw-icon{
-	display: block;
-  	margin: 0.5em;
-  	opacity: 1.0;
-  	font-size: 2.75em;
-  	color: darkolivegreen;
+  display: block;
+  margin: 0.5em;
+  opacity: 1.0;
+  font-size: 2.75em;
+  color: #FFF;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 blockquote {
-    display: block;
-    -webkit-margin-before: 0.75em;
-    -webkit-margin-after: 0.75em;
-    -webkit-margin-start: 40px;
-    -webkit-margin-end: 40px;
-}
-#footer {
-   position:fixed;
-   left:1px;
-   bottom:0px;
-   height:30px;
-   width:100%;
-   background:#999;
+  display: block;
+  -webkit-margin-before: 0.75em;
+  -webkit-margin-after: 0.75em;
+  -webkit-margin-start: 40px;
+  -webkit-margin-end: 40px;
 }
 
+footer{
+  z-index:665;
+  bottom: 0;
+  display:block;
+  margin:0 auto;
+  padding: 0;
+  background-image:url('images/pat1-mult.svg');
+  height: 100px;
+  width:100%;
+}
 
 
+/* NAV */
 
+.toggle-button {
+  position: fixed;
+  width: 44px;
+  height: 40px;
+  margin: 1.5em;
+  transition: .25s;
+  z-index: 6667;
+}
 
+.toggle-button:hover {
+  cursor: pointer;
+}
 
+.toggle-button .menu-bar {
+  position: absolute;
+  border-radius: 2px;
+  width: 100%;
+  transition: .5s;
+}
 
+.toggle-button .menu-bar-top {
+  border: 4px solid #2E253D;
+  border-bottom: none;
+  top: 0;
+}
 
+.toggle-button .menu-bar-middle {
+  height: 4px;
+  background-color: #2E253D;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  top: 4px;
+}
 
+.toggle-button .menu-bar-bottom {
+  border: 4px solid #2E253D;
+  border-top: none;
+  top: 22px;
+}
 
+.button-open .menu-bar-top {
+  background-color: #EFE6FF;
+  border-color: #EFE6FF;
+  transform: rotate(45deg) translate(8px, 8px);
+  transition: .5s;
+}
 
+.button-open .menu-bar-middle {
+  transform: translate(230px);
+  transition: .1s ease-in;
+  opacity: 0;
+}
 
+.button-open .menu-bar-bottom {
+  background-color: #EFE6FF;
+  border-color: #EFE6FF;  
+  transform: rotate(-45deg) translate(8px, -7px);
+  transition: .5s;
+}
 
+.menu-wrap {
+  background-color: #5A4878;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 280px;
+  margin-left: -280px;
+  font-size: 1em;
+  font-weight: 700;
+  overflow: auto;
+  transition: .25s;
+  z-index: 6666;
+  color: #EFE6FF;
+}
 
+.menu{
+  top:6em;
+  list-style-type:none;
+  line-height:2em;
+  padding:2em;
+}
 
+.menu-show {
+  margin-left: 0;
+  box-shadow: 4px 2px 15px 1px #BFB8CC;
+}
 
+.menu-sidebar li > a::after {
+  content: "";
+  display: block;
+  height: .3em;
+  position: absolute;
+  top: 100%;
+  width: 102%;
+  left: 50%;
+  transform: translate(-50%);
+  background-image: linear-gradient(to right, transparent 50.3%, #EFE6FF 50.3%);
+  transition: background-position .2s .1s ease-out;
+  background-size: 200% auto;
+}
+.menu-sidebar li > a {
+  text-decoration:none;
+  color: #EFE6FF;
+}
 
+.menu-sidebar li > a:hover::after {
+    background-position: -100% 0;
+}
 
+.menu-sidebar li > a::after {
+  background-image: linear-gradient(to right, transparent 50.3%, #EFE6FF 50.3%);
+}
 
 
 
@@ -131,7 +384,20 @@ blockquote {
 
 
 
-</script><tw-tag name="exemptions" color="orange"></tw-tag>,<tw-tag name="forfeiture" color="green"></tw-tag>,<tw-tag name="misc_complete" color="purple"></tw-tag>,<tw-tag name="in_progress" color="yellow"></tw-tag>,<tw-tag name="inprogress" color="yellow"></tw-tag>,<tw-tag name="QA" color="red"></tw-tag>,<tw-tag name="surveillance" color="blue"></tw-tag>,<tw-tag name="blocked" color="gray"></tw-tag>,<tw-tag name="UX" color="red"></tw-tag><tw-passagedata pid="1" name="Welcome" tags="misc_complete" position="1495,297" size="200,200">&lt;h2&gt;Foia The Police&lt;/h2&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+</script><tw-tag name="exemptions" color="orange"></tw-tag>,<tw-tag name="forfeiture" color="green"></tw-tag>,<tw-tag name="misc_complete" color="purple"></tw-tag>,<tw-tag name="in_progress" color="yellow"></tw-tag>,<tw-tag name="inprogress" color="yellow"></tw-tag>,<tw-tag name="QA" color="red"></tw-tag>,<tw-tag name="surveillance" color="blue"></tw-tag>,<tw-tag name="blocked" color="gray"></tw-tag>,<tw-tag name="UX" color="red"></tw-tag><tw-passagedata pid="1" name="Welcome" tags="inprogress" position="1500.6666666666667,293" size="200,200">
+&lt;h2&gt;Foia The Police&lt;/h2&gt;
 
 One of the many tools that the public has to learn more about the activities of police departments is by sending public records requests.  This process can be long and frustrating but we are here to help. 
 
@@ -147,10 +413,7 @@ If you have sent requests before and you know exactly you want to research, sele
 
  * [[Surveillance&lt;-Surveillance]]
  * [[Civil Asset Forfeiture&lt;-Asset Forfeiture]]
- * [[Stop and Frisk&lt;-Stop and Frisk]]
-
-
-[[Acknowledgements]]</tw-passagedata><tw-passagedata pid="2" name="FOIA" tags="misc_complete" position="1000,0" size="200,100">The Illinois public records act shares its name with the federal law. They are both know as the //&quot;Freedom of Information Act&quot;//(FOIA) although they are distinct laws with separate provisions. One of the key frustrations with FOIA is that while you have a //right// to records, you will often not get them. Therefore, familiarizing yourself intimately with the FOIA &lt;a href=&quot;http://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=85&amp;ChapterID=2&quot;; target=&quot;_blank&quot;&gt;statute&lt;/a&gt; is a key tool for liberating your data. Many times, government agency will unjustly deny your request, overly redact them, claim the &lt;a href=&quot;https://www.muckrock.com/news/archives/2017/apr/26/chicago-police-cellebrite/&quot;; target=&quot;_blank&quot;&gt;records don&#39;t exist&lt;/a&gt; or refuse to release records in a &lt;a href=&quot;https://www.propublica.org/article/delayed-denied-dismissed-failures-on-the-foia-front&quot;; target=&quot;_blank&quot;&gt;timely manner&lt;/a&gt;.
+ * [[Stop and Frisk&lt;-Stop and Frisk]]</tw-passagedata><tw-passagedata pid="2" name="FOIA" tags="misc_complete" position="998,0" size="200,100">The Illinois public records act shares its name with the federal law. They are both know as the //&quot;Freedom of Information Act&quot;//(FOIA) although they are distinct laws with separate provisions. One of the key frustrations with FOIA is that while you have a //right// to records, you will often not get them. Therefore, familiarizing yourself intimately with the FOIA &lt;a href=&quot;http://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=85&amp;ChapterID=2&quot;; target=&quot;_blank&quot;&gt;statute&lt;/a&gt; is a key tool for liberating your data. Many times, government agency will unjustly deny your request, overly redact them, claim the &lt;a href=&quot;https://www.muckrock.com/news/archives/2017/apr/26/chicago-police-cellebrite/&quot;; target=&quot;_blank&quot;&gt;records don&#39;t exist&lt;/a&gt; or refuse to release records in a &lt;a href=&quot;https://www.propublica.org/article/delayed-denied-dismissed-failures-on-the-foia-front&quot;; target=&quot;_blank&quot;&gt;timely manner&lt;/a&gt;.
 
 
 Some important features to know about FOIA:
@@ -168,7 +431,7 @@ Some important features to know about FOIA:
  * Right to attorney fees - //If you sue for your public records and win, the agency you sued must pay &quot;reasonable attorney fees&quot; to you and your legal representation//.
  * No obligation to &quot;answer&quot; your questions - //An agency will reject your FOIA if you submit it in the form of a question. For example, if you want to know if an agency purchased a specific software license ask for &quot;documents or receipts about the purchase of Cellebrite&quot;//.
  
- Ultimately, there will be many challenges to doing public records requests. You will most likely learn the nuances of the laws by practicing and doing requests. Thankfully it is possible to re-send your requests multiple times with different language until you get your records. </tw-passagedata><tw-passagedata pid="3" name="Surveillance" tags="surveillance misc_complete" position="2002.3333333333333,402" size="200,100">Police surveillance can take many types of forms. Often, these programs are clouded in secrecy and hard to uncover. You may have to think creatively about how the records are stored, look for money being spent &lt;a href = &quot;https://www.propublica.org/article/private-donors-supply-spy-gear-to-cops&quot;; target=&quot;_blank&quot;&gt;outside&lt;/a&gt; of the &lt;a href=&quot;https://boingboing.net/2015/08/17/lapd-chicago-bought-stingr.html&quot;; target=&quot;_blank&quot;&gt;regular police budget&lt;/a&gt;, or file lawsuits for records. 
+ Ultimately, there will be many challenges to doing public records requests. You will most likely learn the nuances of the laws by practicing and doing requests. Thankfully it is possible to re-send your requests multiple times with different language until you get your records. </tw-passagedata><tw-passagedata pid="3" name="Surveillance" tags="surveillance misc_complete" position="2703,403" size="200,100">Police surveillance can take many types of forms. Often, these programs are clouded in secrecy and hard to uncover. You may have to think creatively about how the records are stored, look for money being spent &lt;a href = &quot;https://www.propublica.org/article/private-donors-supply-spy-gear-to-cops&quot;; target=&quot;_blank&quot;&gt;outside&lt;/a&gt; of the &lt;a href=&quot;https://boingboing.net/2015/08/17/lapd-chicago-bought-stingr.html&quot;; target=&quot;_blank&quot;&gt;regular police budget&lt;/a&gt;, or file lawsuits for records. 
 
 Additionally, as we saw in the case of the struggles against the North Dakota Access Pipeline (DAPL), the surveillance can take many forms including &lt;a href=&quot;https://theintercept.com/2017/05/27/leaked-documents-reveal-security-firms-counterterrorism-tactics-at-standing-rock-to-defeat-pipeline-insurgencies/&quot;; target=&quot;_blank&quot;&gt;private military contractors&lt;/a&gt;, local police, and &lt;a href=&quot;https://theintercept.com/document/2017/05/27/intel-group-email-thread/&quot;; target=&quot;_blank&quot;&gt;the FBI&lt;/a&gt;. This is further complicated with data sharing agreements between &lt;a href=&quot;https://www.memphisdailynews.com/news/2017/mar/14/tennessee-fusion-center-monitored-july-protests-in-memphis-emails-reveal/&quot;; target=&quot;_blank&quot;&gt;local police&lt;/a&gt;, &lt;a href=&quot;https://theintercept.com/2015/07/24/documents-show-department-homeland-security-monitoring-black-lives-matter-since-ferguson/&quot;; target=&quot;_blank&quot;&gt;fusion &lt;/a&gt; &lt;a href=&quot;https://privacysos.org/blog/so-called-counterterror-fusion-center-in-massachusetts-monitored-black-lives-matter-protesters/&quot;; target=&quot;_blank&quot;&gt;centers&lt;/a&gt; and &lt;a href=&quot;https://www.aljazeera.com/news/2017/11/documents-show-monitoring-black-lives-matter-171128110538134.html&quot;; target=&quot;_blank&quot;&gt;Department of Homeland Security&lt;/a&gt;. 
 
@@ -180,7 +443,7 @@ Some topics you can investigate include:
  * Cell Site Simulators, otherwise known as [[Stingrays]] 
  * [[Security Cameras]]
  * [[Cellebrite]]
- </tw-passagedata><tw-passagedata pid="4" name="Civil Asset Forfeiture" tags="forfeiture misc_complete" position="1000.3333333333334,599.3333333333334" size="200,200">Civil asset forfeiture is a process by which police and prosecutors keep cash, cars, and other valuables from people after seizing the property during a traffic stop, an arrest, or an investigation. In Illinois, as in many states across the country, you don&#39;t have to be convicted of a crime or even charged before prosecutors can maneuver to keep your property. Many cities and states have forfeiture laws, as well as the federal government. Historically, asset forfeiture was 
+ </tw-passagedata><tw-passagedata pid="4" name="Civil Asset Forfeiture" tags="forfeiture misc_complete" position="1899,598" size="200,200">Civil asset forfeiture is a process by which police and prosecutors keep cash, cars, and other valuables from people after seizing the property during a traffic stop, an arrest, or an investigation. In Illinois, as in many states across the country, you don&#39;t have to be convicted of a crime or even charged before prosecutors can maneuver to keep your property. Many cities and states have forfeiture laws, as well as the federal government. Historically, asset forfeiture was 
 
 There are many ways to analyze the scope of these programs. You might be interested in //where the money is being spent//, or //who had their property seized//, or //the size of the program//. However, there are multiple offices involved: prosecutors, police departments and judges are all involved at various levels. There are also local, state and federal partners involved. Often they work as task forces and each member of the task force will also get a percentage of the net value of property seized.
 
@@ -189,17 +452,42 @@ There are many ways to analyze the scope of these programs. You might be interes
 * The [[Cook County States Attorneys|CCSAOassets]]&#39; office handles the civil court cases, and they receive 25% of the seizures ultimately forfeited. If you were investigating the //demographics of who was having their proper seized//, you might start by looking into this office for information.
  
 * The [[Chicago Police Department|CPDassets]] seizes the property, keeping 65% of the proceeds and spending the money on their own in &lt;a href=&quot;https://www.chicagoreader.com/chicago/police-department-civil-forfeiture-investigation/Content?oid=23728922&quot;; target=&quot;_blank&quot;&gt;secret budget.&lt;/a&gt; If you wanted to learn more about the //day to day operations of asset forfeiture// and where the funds ultimately end up, you would send FOIAs to CPD.
-</tw-passagedata><tw-passagedata pid="5" name="Stop and Frisk" tags="inprogress" position="2000.333333333333,200.33333333333334" size="200,100">When Garry McCarthy was in charge of the Chicago Police, we had the most intense stop-and-frisk program in the nation-- &lt;a href=&quot;
-http://www.aclu-il.org/wp-content/uploads/2015/03/ACLU_StopandFrisk_6.pdf&quot;; target=&quot;_blank&quot;&gt;four times the rate that New York&lt;/a&gt; did at the height of its stop-and-frisk program. Gathering the raw data has been a contentious issue among Chicago activists. We Charge Genocide, a group of activists pushing against police violence attempted to gather data on policing and were working on stopping stop and frisk. At one point, We Charge Genocide wanted to introduce a bill that would dramatically curtail the ability of CPD to conduct stop.s Instead, at the &lt;a href=&quot;http://www.truth-out.org/news/item/32361-aclu-of-illinois-sells-out-chicago-s-black-youth&quot;; target=_blank&quot;&gt;eleventh hour&lt;/a&gt; the city announced that they would entire into a private agreement with the ACLU of IL around stop and frisk. One of the conditions was that the ACLU &lt;a href=&quot;http://wechargegenocide.org/an-open-letter-to-the-aclu-of-illinois-regarding-stop-frisk/&quot;; target=&quot;_blank&quot;&gt;would not release the data given to them. 
+</tw-passagedata><tw-passagedata pid="5" name="Stop and Frisk" tags="misc_complete" position="2099,3" size="200,100">
+When Garry McCarthy was in charge of the Chicago Police, Chicago had the most intense stop-and-frisk program in the nation—&lt;a href=&quot;https://www.aclu-il.org/sites/default/files/wp-content/uploads/2015/03/ACLU_StopandFrisk_6.pdf&quot;; target=&quot;_blank&quot;&gt;four times the rate that New York&lt;/a&gt; did at the height of its stop-and-frisk program. Gathering the raw data has been a contentious issue among Chicago activists. 
 
-https://www.documentcloud.org/documents/4443649-2016-11-14-Ltr-From-LG-to-Taft-Re-USDOJ-Seventh.html#document/p3/a419234
+Obtaining data on this practice has long been a priority for Chicago activists and community advocates. But this has proved difficult. As part of the //&lt;a href=&quot;http://wechargegenocide.org&quot;; target=&quot;_blank&quot;&gt;We Charge Genocide&lt;a/&gt;// a group of young black activists worked to compile a report of Chicago Police&#39;s pattern of abuses. As part of their efforts they worked to gather information such as Taser use, misconduct settlements and police stops
 
-{{{
-&#96;The CLEAR description of the “contact_cards” table indicates that it is the “[m]ain record for a contact card or
-traffic safety stop.”
-Te CLEAR description of the “contact_traffic_stops” table indicates that it “[s]tores additional fields relating to
-contact cards of source Traffic Stop.”&#96;
-}}}</tw-passagedata><tw-passagedata pid="6" name="Exemptions" tags="exemptions misc_complete" position="602,351" size="200,200">
+During their efforts, We Charge Genocide attempted to introduce a bill in the Chicago City Council that would severely restrict the CPD&#39;s ability to conduct stops. Before that bill could be introduced, the City announced it would enter into a &lt;a href=&quot;http://www.truth-out.org/news/item/32361-aclu-of-illinois-sells-out-chicago-s-black-youth&quot;; target=&quot;_blank&quot;&gt;private agreement&lt;/a&gt; with the ACLU of Illinois regarding stop and frisk. One condition of that agreement was that the ACLU *would not* &lt;a href=&quot;http://wechargegenocide.org/an-open-letter-to-the-aclu-of-illinois-regarding-stop-frisk/&quot;; target=&quot;_blank&quot;&gt;release the data&lt;/a&gt; they had obtained on stop-and-frisk.
+
+The Department of Justice&#39;s 2015-2016 investigation of the Chicago Police found a pattern of &lt;a href=&quot;https://www.theatlantic.com/news/archive/2017/01/justice-department-chicago-police-report/513113/&quot;; target=&quot;_blank&quot;&gt;abusive practices&lt;/a&gt;: shooting people who posed no risk to officers, widespread and systemic racism, and unlawful use of Tasers, among others. After the DOJ &lt;a href=&quot;https://www.muckrock.com/foi/chicago-169/city-hall-all-doj-documents-32678/&quot;; target=&quot;_blank&quot;&gt;report&lt;/a&gt; was released, LPL filed a public records request with the City for an &lt;a href=&quot;https://www.muckrock.com/foi/chicago-169/city-hall-all-doj-documents-32678/&quot;; target=&quot;_blank&quot;&gt;&quot;index&quot; of requested documents&lt;/a&gt;. That request showed that the thousands of pages of police records reviewed by the DOJ included so-called &quot;&lt;a href=&quot;https://www.documentcloud.org/documents/4443649-2016-11-14-Ltr-From-LG-to-Taft-Re-USDOJ-Seventh.html#document/p3/a419234&quot;; target=&quot;_blank&quot;&gt;contact cards&lt;/a&gt;&quot;---forms that CPD officers are required to fill out after every stop-and-frisk. According to the DOJ,
+
+{{{The CLEAR description of the “contact cards” table indicates that it is the “[m]ain record for a contact card or traffic safety stop.” The CLEAR description of the “&#96;contact_traffic_&#96;stops” table indicates that it “[s]tores additional fields relating to contact cards of source Traffic Stop.”}}}
+
+Based on this information, Lucy Parsons Labs was able to send &lt;a href=&quot;https://www.muckrock.com/foi/chicago-169/cpd-contact-cards-2012-2014-38540/&quot;; target=&quot;_blank&quot;&gt;two&lt;/a&gt; more specific &lt;a href=&quot;https://www.muckrock.com/foi/chicago-169/cpd-contact-cards-2014-2016-34241/&quot;; target=&quot;_blank&quot;&gt;requests&lt;/a&gt; and finally obtain over six years of data. A copy of the request is below:
+
+&lt;blockquote&gt;
+To Whom It May Concern:
+
+Pursuant to the Illinois Freedom of Information Act (5 ILCS 140/1 to 11), I hereby request the following records:
+
+According to public records, the CLEAR database contains two tables: &#96;contact_cards&#96; and &#96;contact_traffic_stops&#96;.
+
+Therefore, for the years between 2014 to 2016, we request all records in both the &#96;contact_cards&#96; and &#96;contact_traffic_stops tables&#96;.
+
+The requested documents will be made available to the general public, and this request is not being made for commercial purposes.
+&lt;/blockquote&gt;
+
+&lt;div style=&quot;text-align:center&quot;&gt;**FOIA Request**&lt;/div&gt;
+
+As part of the &lt;a href=&quot;https://chicagodatacollaborative.org/&quot;; target=&quot;_blank&quot;&gt;Chicago Data Collaborative&lt;/a&gt;  the full data set was released. Included in the release are  preliminary &lt;a href=&quot;https://dataforjustice.github.io/chicagostopandfrisk/&quot;; target=&quot;_blank&quot;&gt;data visualizations&lt;/a&gt; and an &lt;a href=&quot;https://github.com/DataForJustice/chicagostopandfrisk&quot;; target=&quot;_blank&quot;&gt;open-source&lt;/a&gt; analysis. Paola Villarrea, a data scientist, volunteered her time and skills to analyze the data and publish the preliminary visualizations. The original documents are available for &lt;a href=&quot;https://www.dropbox.com/sh/lq4uvm5bb2ikur7/AAB4AuGpbTvHFcMP8xq4rfsJa?dl=0&quot;; target=&quot;_blank&quot;&gt;download&lt;/a&gt;.
+
+&lt;hr&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/cpd/stop_and_frisk.png&quot;&gt;&lt;/img&gt;
+&lt;hr&gt;
+&lt;div style=&quot;text-align:center&quot;&gt;**Pictured: Overwhelmingly African-Americans are stopped in Chicago**&lt;/div&gt;
+
+
+</tw-passagedata><tw-passagedata pid="6" name="Exemptions" tags="exemptions misc_complete" position="602,301" size="200,200">
  * //Law Enforcement Sensitive// - One of the provisions of the FOIA is that you can not FOIA for documents that are law enforcement sensitive. This means a lot of things, for example you can not FOIA for the name of confidential informations. This could also apply to things like the location of surveillance cameras. However, this exemption is often misapplied by law enforcement. [[Learn more.|fightLEOsensitive]]
 
  * //Trade Secret// - A common denial when seaking electronic records, such as a database schema, is that the information been requested would is a trade secret. Often, corporations will be consulted by the FOIA officers if you are asking about one of their products. However, just because it relates to a corporation&#39;s intellectual property does not mean the records are exempt from release. The agency would have to demonstrate that there is &#96;&quot;&#96;&lt;a href=&quot;https://www.rcfp.org/federal-open-government-guide/exemptions-disclosure-under-foia/4-trade-secrets&quot;; target=&quot;_blank;&quot;&gt;substantial competitive harm&lt;/a&gt;&#96;&quot;&#96; to the corporation before invoking this exemption. [[Learn more.|fightTrade]]
@@ -209,13 +497,13 @@ contact cards of source Traffic Stop.”&#96;
  * //Unduly Burdensome// - You may run into this exemption when you are requesting a large volume of records or when documents are saved in inaccessible formats. While you have a right to request records in any format, there is no guarantee that an agency will actually respond accordingly. It should be noted that unduly burdensome will vary from agency to agency. [[Learn more.|fightBurdensome]]
 
  * //Constructive Denials// - One principle frustration with FOIA is that while you are entitled to records under the law, you will often not get the records you are entitled to. For example, an agency may attempt to charge you &lt;a href=&quot;https://www.eff.org/deeplinks/2016/03/foilies-2016-recognizing-worst-government-responses-public-records-requests/#fee&quot;; target=&quot;_blank&quot;;&gt;$660 million dollars&lt;/a&gt; for the records. A constructive denial is when an agency may not necessarily say &#96;&quot;no&quot;&#96; but will attempt to withold records.  [[Learn more.|fightConstructive]]
-</tw-passagedata><tw-passagedata pid="7" name="Kalven vs CPD" tags="blocked" position="1501,601" size="200,100">TO DO:
+</tw-passagedata><tw-passagedata pid="7" name="Kalven vs CPD" tags="blocked" position="2100,201" size="200,100">TO DO:
 
 Add information here about Jamie Kalven&#39;s suit for CR (CPD complaint records). 
 
 Links: 
 https://cpdb.co/
-https://invisible.institute</tw-passagedata><tw-passagedata pid="8" name="ISPassets" tags="forfeiture misc_complete" position="600,701" size="200,100">The Institute for Justice &lt;a href =&quot;http://ij.org/pfp-state-pages/pfp-illinois/&quot;; target=&quot;_blank&quot;&gt;reports&lt;/a&gt; that Illinois State Police (ISP) seize an average of $22.6 million dollars from citizens between 2009 and 2013. 
+https://invisible.institute</tw-passagedata><tw-passagedata pid="8" name="ISPassets" tags="forfeiture misc_complete" position="1501,696" size="200,100">The Institute for Justice &lt;a href =&quot;http://ij.org/pfp-state-pages/pfp-illinois/&quot;; target=&quot;_blank&quot;&gt;reports&lt;/a&gt; that Illinois State Police (ISP) seize an average of $22.6 million dollars from citizens between 2009 and 2013. 
 Approximately $20 million of that was US currency and another $1.6 million was vehicles. 
 
 &lt;img src = &quot;https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/isp/isp_seizures.png&quot;&gt;
@@ -227,7 +515,7 @@ After obtaining records from ISP about their expenses we noticed a huge amount o
 
 Other expenses by ISP include paying for phone services, phone tapping equipment (PenLink), five hundred thousand to pay for IT consultant and Bushmaster firearms. You can see the full expenditures covering several years on our &lt;a href=&quot;https://github.com/lucyparsons/1505-documents/blob/master/ISP/ISP_FOIA15-2221.pdf&quot;; target=&quot;_blank&quot;&gt;GitHub page&lt;/a&gt;.
 
-ISP was able to turn over all this data by running one expense report so we were able to get all of the data in one FOIA request. </tw-passagedata><tw-passagedata pid="9" name="CCSAOassets" tags="forfeiture" position="1199.6666666666667,900.3333333333334" size="200,100">Add information here about how we were able to get the information about seizures after years of efforts. 
+ISP was able to turn over all this data by running one expense report so we were able to get all of the data in one FOIA request. </tw-passagedata><tw-passagedata pid="9" name="CCSAOassets" tags="forfeiture" position="2098,900" size="200,100">Add information here about how we were able to get the information about seizures after years of efforts. 
 
 That includes information about the history of:
 
@@ -245,7 +533,7 @@ That includes information about the history of:
  -- Bill passes both houses
  -- bill signed
  
- </tw-passagedata><tw-passagedata pid="10" name="CPDassets" tags="forfeiture misc_complete" position="800,901" size="200,100">When Lucy Parsons Labs began its investigation into Civil Asset Forfeiture, we had no idea what the &#96;&#96;&quot;1505/1505 ML&quot;&#96;&#96; program was. We did what everyone else does, looked it up in a search engine but that information was still insufficient. However, we knew it was a program within the Chicago Police Department (CPD) that was being used to purchase controversial surveillance equipment. We thought that we might find other interesting surveillance equipment if we audited the expenditures of the 1505 program. 
+ </tw-passagedata><tw-passagedata pid="10" name="CPDassets" tags="forfeiture misc_complete" position="1689,888" size="200,100">When Lucy Parsons Labs began its investigation into Civil Asset Forfeiture, we had no idea what the &#96;&#96;&quot;1505/1505 ML&quot;&#96;&#96; program was. We did what everyone else does, looked it up in a search engine but that information was still insufficient. However, we knew it was a program within the Chicago Police Department (CPD) that was being used to purchase controversial surveillance equipment. We thought that we might find other interesting surveillance equipment if we audited the expenditures of the 1505 program. 
 
 &lt;hr&gt;&lt;div style=&quot;image-align:center&quot;&gt;
 &lt;img src=&quot;https://github.com/lucyparsons/foiathepolice/blob/master/images/stingray_1505.png?raw=true&quot;&gt; 
@@ -265,19 +553,20 @@ From this, we gathered that getting documents from Chicago Police Department wou
 
 &lt;div style=&quot;text-align:center&quot;&gt;[[Digging into outgoing expenditures&lt;-Chicago Police Expenditures]]
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="11" name="Digging into outgoing expenditures" tags="forfeiture misc_complete" position="800.3333333333334,1100" size="200,100">After thinking about the surveillance equipment that police departments are likely to buy, we thought that the really interesting surveillance purchases would have to be expensive; potentially tens or hundreds of thousands of dollars. We did a previous FOIA and received all outgoing expenses and noticed many of them for small amounts of money, less than a hundred dollars. Therefore we made a decision to only request all outgoing expenses above $5,000. (There was nothing special about the $5,000 treshold, it was an arbitrary number that we chose). Our response came in the form of a PDF with the outgoing check numbers. 
+</tw-passagedata><tw-passagedata pid="11" name="Digging into outgoing expenditures" tags="forfeiture misc_complete" position="1689,1090" size="200,100">After thinking about the surveillance equipment that police departments are likely to buy, we thought that the really interesting surveillance purchases would have to be expensive; potentially tens or hundreds of thousands of dollars. We did a previous FOIA and received all outgoing expenses and noticed many of them for small amounts of money, less than a hundred dollars. Therefore we made a decision to only request all outgoing expenses above $5,000. (There was nothing special about the $5,000 treshold, it was an arbitrary number that we chose). Our response came in the form of a PDF with the outgoing check numbers. 
 &lt;hr&gt;&lt;div style=&quot;text-align:center&quot;&gt;
 &lt;a href=&quot;https://www.documentcloud.org/documents/4425772-1505-ExpendituresCheck-Narrowed-Rpt.html&quot;; target=&quot;_blank&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/cpd/1505_outgoingchecks.png?raw=true&quot;&gt;&lt;/img&gt;Outgoing Expenses over $5,000&lt;/a&gt;&lt;/div&gt;&lt;hr&gt;
-Knowing that this was a lot of work, we decided to organize it on &lt;a href=&quot;https://www.muckrock.com/&quot;; target=&quot;_blank&quot;&gt;MuckRock&lt;/a&gt;. MuckRock is a popular platform for managing your FOIA requests: it automatically hosts  documents you receive  and follows up with departments when they are tardy to fill requests. At the same time, we reached out to MuckRock about doing a joint project. After some discussions, we launched the &lt;a href=&quot;https://www.muckrock.com/project/opening-the-chicago-surveillance-fund-25/&quot;; target=&quot;_blank&quot;&gt;Opening the Chicago Surveillence Project&lt;/a&gt; as an umbrella effort to share capacity.  Eventually the project would span over [[two years and hundreds of requests]].</tw-passagedata><tw-passagedata pid="12" name=" Additional Reporting" tags="forfeiture" position="797.6666666666666,1500" size="200,100">
-this section will have a lot of the reporting we did: visiting court rooms, talking to lawyers, getting documents etc.
+Knowing that this was a lot of work, we decided to organize it on &lt;a href=&quot;https://www.muckrock.com/&quot;; target=&quot;_blank&quot;&gt;MuckRock&lt;/a&gt;. MuckRock is a popular platform for managing your FOIA requests: it automatically hosts  documents you receive  and follows up with departments when they are tardy to fill requests. At the same time, we reached out to MuckRock about doing a joint project. After some discussions, we launched the &lt;a href=&quot;https://www.muckrock.com/project/opening-the-chicago-surveillance-fund-25/&quot;; target=&quot;_blank&quot;&gt;Opening the Chicago Surveillence Project&lt;/a&gt; as an umbrella effort to share capacity.  Eventually the project would span over [[two years and hundreds of requests]].</tw-passagedata><tw-passagedata pid="12" name=" Additional Reporting" tags="forfeiture" position="1698,1502" size="200,100">To learn more about the process of asset forfeiture, we knew we had to do more with reporting beyond where the money was being spent by the police. We reached out to Joel Handley because we knew him from his reporting on [[automatic license plate readers-&gt;Automatic License Plate Readers]]. Collaberatively we visited the court house to find cases about asset forfeiture and understand the civil process. 
 
-- Contacted a journalist to do some reporting
-- Contacted lawyers who knew about car seizures
+We also found out that the Cook County State&#39;s Attorney had previously been challenged to the United States &lt;a href=&quot;http://www.scotusblog.com/case-files/cases/alvarez-v-smith/&quot;; target=&quot;_blank&quot;&gt;Supreme Court&lt;/a&gt; for her administration of asset forfeiture. So we reached out to &lt;a href=&quot;https://news.uchicago.edu/article/2009/10/26/clinic-students-help-see-case-supreme-court&quot;; target=&quot;_blank&quot;&gt;Craig Futterman&lt;/a&gt; at University of Chicago to learn more. Finally, we reached out to the //Chicago Reader&lt;// about all the work we had done. 
 
 
-[[Publication]]
-</tw-passagedata><tw-passagedata pid="13" name="Publication" tags="forfeiture" position="798.6666666666666,1698" size="200,100">This section will talk about our final data analysis, Python notebooks, and data visualization with D3.
-</tw-passagedata><tw-passagedata pid="14" name="two years and hundreds of requests" tags="forfeiture misc_complete" position="801.6666666666666,1300.6666666666667" size="200,100">Since we wanted to know where that money was going, we collected about &lt;a href=&quot;https://github.com/lucyparsons/1505analysis/blob/master/deposits/1505Deposits.pdf?raw=true&quot;; target=&quot;_blank&quot;;&gt;six years of deposits&lt;/a&gt; of civil assset forfeiture in an PDF. Since the data was not machine readable, the first thing we did was &lt;a href=&quot;https://en.wikipedia.org/wiki/Optical_character_recognition&quot;; target=&quot;_blank&quot;&gt;OCR&lt;/a&gt; the PDFs using Python code. From there, we verified the output by doing manual checks. Satisfied that our data was accurate we dumped the the data and entered into a &lt;a href=&quot;https://docs.google.com/spreadsheets/d/17c8E6Jys28aHNc2MgLw41ov67J_V5qU39vOdhD2wTUg/edit?usp=sharing&quot;; target=&quot;_blank&quot;;&gt;speadsheet&lt;/a&gt; that we shared internally to our organization. 
+&lt;div style=&quot;image-align:center&quot;&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/misc/python_notebook.png?raw=true&quot;&gt;
+&lt;/div&gt;
+
+We wrote an &lt;a href=&quot;https://github.com/lucyparsons/1505analysis/blob/master/preprocess/Exploratory.ipynb&quot;; target=&quot;_blank&quot;;&gt;IPython notebook&lt;/a&gt; to convert our data into a useable format for D3, a popular library for producing dynamic data visualizations. 
+</tw-passagedata><tw-passagedata pid="13" name="two years and hundreds of requests" tags="forfeiture misc_complete" position="1690,1291" size="200,100">Since we wanted to know where that money was going, we collected about &lt;a href=&quot;https://github.com/lucyparsons/1505analysis/blob/master/deposits/1505Deposits.pdf?raw=true&quot;; target=&quot;_blank&quot;;&gt;six years of deposits&lt;/a&gt; of civil assset forfeiture in an PDF. Since the data was not machine readable, the first thing we did was &lt;a href=&quot;https://en.wikipedia.org/wiki/Optical_character_recognition&quot;; target=&quot;_blank&quot;&gt;OCR&lt;/a&gt; the PDFs using Python code. From there, we verified the output by doing manual checks. Satisfied that our data was accurate we dumped the the data and entered into a &lt;a href=&quot;https://docs.google.com/spreadsheets/d/17c8E6Jys28aHNc2MgLw41ov67J_V5qU39vOdhD2wTUg/edit?usp=sharing&quot;; target=&quot;_blank&quot;;&gt;speadsheet&lt;/a&gt; that we shared internally to our organization. 
 &lt;hr&gt;
 &lt;img src=&quot;https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/cpd/deposits_spreadsheet1.png?raw=true&quot;&gt;&lt;/img&gt;
 &lt;hr&gt;
@@ -289,7 +578,7 @@ Since we had over six hundred checks that we wanted to request, we knew that thi
 &lt;hr&gt;
 
 However, we didn&#39;t really know what to do with this information. We saw that the checks referenced [[automatic license plate readers-&gt;Automatic License Plate Readers]] so we reached out to our reporter friend Joel Handley to do some [[additional reporting-&gt; Additional Reporting]].
-</tw-passagedata><tw-passagedata pid="15" name="fightLEOsensitive" tags="exemptions misc_complete" position="296,0" size="200,100">We have often ran into the &quot;law enforcement sensitive&quot; exemption when attempting to understand how surveillance equipment that is used by police departments. This provision is found in all public records statues, for example the Federal FOIA statue has a similar statue called //&lt;a href=&quot;https://www.justice.gov/oip/foia-guide-2004-edition-exemption-7e&quot;; target=&quot;_blank&quot;&gt;b 7 (E)&lt;/a&gt;//. 
+</tw-passagedata><tw-passagedata pid="14" name="fightLEOsensitive" tags="exemptions misc_complete" position="296,0" size="200,100">We have often ran into the &quot;law enforcement sensitive&quot; exemption when attempting to understand how surveillance equipment that is used by police departments. This provision is found in all public records statues, for example the Federal FOIA statue has a similar statue called //&lt;a href=&quot;https://www.justice.gov/oip/foia-guide-2004-edition-exemption-7e&quot;; target=&quot;_blank&quot;&gt;b 7 (E)&lt;/a&gt;//. 
 
 If you want to fight back you against this exemption you should careful read the statue. For example, an agency may respond to your FOIA with a denial in part because the Illinois FOIA statue allows this exemption:
 &lt;blockquote&gt;&lt;b&gt;
@@ -303,7 +592,7 @@ This exemption is often used when we were doing public records requests around &
 &lt;div style=&quot;text-align:center&quot;&gt;//Image: Zero Dark Thirty//&lt;/div&gt;
 
 &lt;div style=&quot;text-align:center&quot;&gt;[[Read More|fightLEOsensitivereadmore]]&lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="16" name="fightLEOsensitivereadmore" tags="exemptions misc_complete" position="0,0" size="200,100">&lt;br&gt;
+</tw-passagedata><tw-passagedata pid="15" name="fightLEOsensitivereadmore" tags="exemptions misc_complete" position="0,0" size="200,100">&lt;br&gt;
 Another common misapplication of this section of exemptions is that it would endanger &quot;ongoing criminal investigations&quot;. This language is often envoked by police agencies when you request records of waste, fraud or abuse. For example, if you send a request to the Civilian Office of Police Accountability (COPA), which oversees the Chicago Police Department, they may reply with a denial in part because the records would:
 &lt;blockquote&gt;&lt;b&gt;
 (vii) obstruct an ongoing criminal investigation by the agency that is the recipient of the request. 
@@ -314,7 +603,7 @@ However, the application of this section by IPRA (the predecessor to COPA) was &
 &lt;hr&gt;&lt;div style=&quot;text-align:center&quot;&gt;
 &lt;img src=&quot; https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/exemptions/leo_vii_pt1.png?raw=true&quot;&gt;&lt;img&gt;&lt;img src=&quot;
 https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/exemptions/leo_vii_pt2.png?raw=true&quot;&gt;&lt;/img&gt;
-&lt;div&gt;</tw-passagedata><tw-passagedata pid="17" name="fightCreaterecords" tags="exemptions misc_complete" position="299,398" size="200,100">A public agency is only obligated to turn over documents in its possession of the body at the time of the request. So if you know a report or spreadsheet exists, you can request it. 
+&lt;div&gt;</tw-passagedata><tw-passagedata pid="16" name="fightCreaterecords" tags="exemptions misc_complete" position="299,398" size="200,100">A public agency is only obligated to turn over documents in its possession of the body at the time of the request. So if you know a report or spreadsheet exists, you can request it. 
 
 Here is an example of a typical denial, for records that should exist:
 &lt;hr&gt;&lt;img src =&quot;https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/exemptions/create_p1.png?raw=true&quot;&gt;&lt;/img&gt;
@@ -326,7 +615,7 @@ In order to push back, think about the data you want:
 * Is it a subsection of a set of records? Often times the records you want are all there but agencies don’t want to sort it so you can request it all and clean it up yourself. 
 * You can also ask for //electronic searches// inside of named databases if you know the records are stored in a database. Often times, government agencies will publish the a //&quot;System of Records&quot;// that tell you where all of the documents would be stored. 
 * Does your request accurately describe the type of data you are requesting? Sometimes if you offer to describe the type of documents you are requesting, you may get the records.
-* Can you prove the records exist? Often times, agencies will claim that &lt;a href=&quot;https://www.muckrock.com/news/archives/2017/apr/26/chicago-police-cellebrite/&quot;; target=&quot;_blank&quot;&gt;record doesn&#39;t exist&lt;/a&gt; when they actually do. If you can point to other documents (budget sheets, news reports, expense reports etc.) that prove documents exist you may have some success.</tw-passagedata><tw-passagedata pid="18" name="What is a public record" tags="misc_complete" position="1000,201" size="200,100">Government officials often argue about what is, and what is not, a public record and. Not surprisingly, they will also attempt to illegally compartmentalize their communications to &lt;a href=&quot;https://www.theguardian.com/us-news/2016/nov/06/rahm-emanuel-personal-email-government-wikileaks&quot;; target=&quot;_blank&quot;&gt;communication channels&lt;/a&gt; such as &lt;a href=&quot;http://thehill.com/policy/national-security/297850-foia-deal-could-speed-release-of-clinton-emails&quot;; target=&quot;_blank&quot;&gt;email servers&lt;/a&gt;. 
+* Can you prove the records exist? Often times, agencies will claim that &lt;a href=&quot;https://www.muckrock.com/news/archives/2017/apr/26/chicago-police-cellebrite/&quot;; target=&quot;_blank&quot;&gt;record doesn&#39;t exist&lt;/a&gt; when they actually do. If you can point to other documents (budget sheets, news reports, expense reports etc.) that prove documents exist you may have some success.</tw-passagedata><tw-passagedata pid="17" name="What is a public record" tags="misc_complete" position="1000,202" size="200,100">Government officials often argue about what is, and what is not, a public record and. Not surprisingly, they will also attempt to illegally compartmentalize their communications to &lt;a href=&quot;https://www.theguardian.com/us-news/2016/nov/06/rahm-emanuel-personal-email-government-wikileaks&quot;; target=&quot;_blank&quot;&gt;communication channels&lt;/a&gt; such as &lt;a href=&quot;http://thehill.com/policy/national-security/297850-foia-deal-could-speed-release-of-clinton-emails&quot;; target=&quot;_blank&quot;&gt;email servers&lt;/a&gt;. 
 
 &lt;hr&gt;&lt;div style=&quot;image-align:center&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/misc/BGA_Rahm.png?raw=true&quot;&gt; 
 &lt;/div&gt;
@@ -336,7 +625,7 @@ As a general rule, a public record is available under the Freedom of Information
  * Regardless of medium; this could include emails, Word documents, text messages, or 911 recordings. 
  * Regardless of where the record was created. If the document was created by a public employee on their personal laptop but emailed to their supervisor, it is still a public document. This also applies to messages created on &lt;a href=&quot;https://www.muckrock.com/news/archives/2017/may/04/seattle-text-messages-phone/&quot;; target=&quot;_blank&quot;&gt;government issued cellphones&lt;/a&gt;.
  
-This also applies to agencies that conduct &lt;a href=&quot;http://www.chicagobusiness.com/article/20180302/NEWS02/180309954/judge-rules-for-bga-in-navy-pier-transparency-case&quot;; target=&quot;_blank&quot;&gt;public business&lt;a&gt; even if they are not public body. For example, the University of Chicago (a private university) has a group called &#96;&quot;Crime Lab&quot;&#96; which is embedded at Chicago Police&#39;s &lt;a href=&quot;http://chicago.cbslocal.com/tag/strategic-decision-support-centers/&quot;; target=&quot;_blank&quot;&gt;Strategic Decision Support Centers&lt;/a&gt;. While the Crime Lab might funded through private funds, you can argue that they are still subject to FOIA. </tw-passagedata><tw-passagedata pid="19" name="firstrequest" tags="misc_complete" position="999,403" size="200,100">Getting started with sending your first request can be intimidating so knowing what makes a good request can be helpful. Occassionally, we will hear from people that they want to send FOIAs but they have no idea how to get started. First of all, be aware that agencies do not have an obligation to answer your questions. You must almost reverse engineer your request to get documents that will answer your questions. Compare and contrast the below requests:
+This also applies to agencies that conduct &lt;a href=&quot;http://www.chicagobusiness.com/article/20180302/NEWS02/180309954/judge-rules-for-bga-in-navy-pier-transparency-case&quot;; target=&quot;_blank&quot;&gt;public business&lt;a&gt; even if they are not public body. For example, the University of Chicago (a private university) has a group called &#96;&quot;Crime Lab&quot;&#96; which is embedded at Chicago Police&#39;s &lt;a href=&quot;http://chicago.cbslocal.com/tag/strategic-decision-support-centers/&quot;; target=&quot;_blank&quot;&gt;Strategic Decision Support Centers&lt;/a&gt;. While the Crime Lab might funded through private funds, you can argue that they are still subject to FOIA. </tw-passagedata><tw-passagedata pid="18" name="firstrequest" tags="misc_complete" position="997,394" size="200,100">Getting started with sending your first request can be intimidating so knowing what makes a good request can be helpful. Occassionally, we will hear from people that they want to send FOIAs but they have no idea how to get started. First of all, be aware that agencies do not have an obligation to answer your questions. You must almost reverse engineer your request to get documents that will answer your questions. Compare and contrast the below requests:
 
 {{{
 //“How many people sued the Chicago Police Department in 2016?//
@@ -345,43 +634,40 @@ This also applies to agencies that conduct &lt;a href=&quot;http://www.chicagobu
 //“Documents sufficient to show the number of lawsuits filed against your agency last year”//
 }}}
 
-Second, offer to explain or describe what documents you want. Many times, you are requesting specific documents that the person processing your request has no clue about. A FOIA officer is likely not read into the specifics of a drug fund or investigative tools, so if you offer to give them more details about what you are looking for, it will save you from [[getting help-&gt;GettingHelp]] in the future. 
+Second, offer to explain or describe what documents you want. Many times, you are requesting specific documents that the person processing your request has no clue about. A FOIA officer is likely not read into the specifics of a drug fund or investigative tools, so if you offer to give them more details about what you are looking for, it will save you from getting help in the future. 
 
-{{{
+&lt;blockquote&gt;
 //Pursuant to the Illinois Freedom of Information Act., I hereby request the following records://
-&lt;br&gt;
-&lt;br&gt;
-//The CPD directive on &quot;PROTECTION OF DEPARTMENT MEMBERS&quot; (found here: http://directives.chicagopolice.org/directives/data/a7a57b38-13c72636-be313-c726-3871593988a070f0.html) contains references to documents regarding &quot;social networking security measures.&quot; It states://
-&lt;br&gt;
-&lt;br&gt;
+//The CPD directive on &quot;PROTECTION OF DEPARTMENT MEMBERS&quot; (found here: &lt;a href=&quot;http://directives.chicagopolice.org/directives/data/a7a57b38-13c72636-be313-c726-3871593988a070f0.html&quot;; target=&quot;_blank&quot;&gt;http://directives.chicagopolice.org/directives/data/a7a57b38-13c72636-be313-c726-3871593988a070f0.html&lt;a&gt;) contains references to documents regarding &quot;social networking security measures.&quot; It states://
+
 //&quot;Department members will refer to... the Deployment Operations Center&#39;s current Informational Bulletin(s) (see Attachment No. 1) (see Attachment No. 2) on social networking security measures.&quot;//
-&lt;br&gt;
-&lt;br&gt;
+
 //This request is for documents referred to above. That is, I am requesting
-&lt;br&gt;
+
 - &quot;Attachment No. 1&quot; and &quot;Attachment No. 2&quot; mentioned in the directive (linked to but inaccessible)
 - any and all documents related to social networking security measures and recommendations, including Deployment Operations Center &quot;Informational Bulletin(s)&quot;.//
-}}}
+&lt;/blockquote&gt;
+
 &lt;div style=&quot;text-align:center&quot;&gt;&lt;strong&gt;Sample: Good Request&lt;/strong&gt;&lt;/div&gt;
 
 Third, you can try to link to news stories, other public documents that prove documents exist and are at that specific agency. This will make it harder for an agency to claim that &lt;a href=&quot;https://www.muckrock.com/news/archives/2017/apr/26/chicago-police-cellebrite/&quot;; target=&quot;_blank&quot;&gt;records don&#39;t exist&lt;/a&gt;. 
 
 
-Finally, the hardest part is you have to balance breadth &amp; specificity. You want to use broad language such as &#96;&quot;I am requesting all documents, //including emails, Word documents, memos and other documents//&quot;&#96; with a specific request &#96;&quot;I am requesting the document titled //2014-INF-300//&quot;&#96;.  This is important because agencies don’t have to answer ambiguous or unclear requests. However, since there is usually no cost to filling a request, you can always re-submit with different language until you find the right balance.</tw-passagedata><tw-passagedata pid="20" name="Automatic License Plate Readers" tags="" position="1899.6666666666667,800" size="200,100">
+Finally, the hardest part is you have to balance breadth &amp; specificity. You want to use broad language such as &#96;&quot;I am requesting all documents, //including emails, Word documents, memos and other documents//&quot;&#96; with a specific request &#96;&quot;I am requesting the document titled //2014-INF-300//&quot;&#96;.  This is important because agencies don’t have to answer ambiguous or unclear requests. However, since there is usually no cost to filling a request, you can always re-submit with different language until you find the right balance.</tw-passagedata><tw-passagedata pid="19" name="Automatic License Plate Readers" tags="" position="2803,800" size="200,100">
 
-Links: http://inthesetimes.com/article/17659/cpd-tightlipped-about-use-of-license-plate-scanners-despite-new-contract</tw-passagedata><tw-passagedata pid="21" name="Stingrays" tags="surveillance misc_complete" position="1603,800" size="200,100">Beginning in March of 2014, we noticed through reporting that local police had obtained cell site simulators through various Department of Justice grants. We also saw a report that prosecutors would rather &lt;a href=&quot;https://arstechnica.com/tech-policy/2015/04/fbi-would-rather-prosecutors-drop-cases-than-disclose-stingray-details/&quot;; target=&quot;_blank&quot;&gt;drop cases&lt;/a&gt; than reveal to defense attorneys when a Stingray were used. We saw additional reports that the Miami Dade police purchased a Stingray to &lt;a href=&quot;https://fusiondotnet.files.wordpress.com/2015/02/miami-dade.pdf&quot;; target=&quot;_blank&quot;&gt;monitor FTAA protests&lt;/a&gt;. We knew there were large-scale protests against NATO in Chicago and that Chicago Police had a history of &lt;a href=&quot;https://www.chicagoreader.com/chicago/confessions-of-a-red-squad-spy/Content?oid=3293807&quot;; target=&quot;_blank&quot;&gt;&gt;illegal&lt;/a&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/1968_Democratic_National_Convention#The_Chicago_Police_riot&quot;; target=&quot;_blank&quot;&gt;activities&lt;/a&gt; against &lt;a href=&quot;http://www.newsweek.com/fred-hampton-black-panther-shot-killed-chicago-730503&quot;; target=&quot;_blank&quot;&gt;activists&lt;/a&gt;. This was the motivation to send our first FOIA to the Chicago Police Department. 
+Links: http://inthesetimes.com/article/17659/cpd-tightlipped-about-use-of-license-plate-scanners-despite-new-contract</tw-passagedata><tw-passagedata pid="20" name="Stingrays" tags="surveillance misc_complete" position="2401,902" size="200,100">Beginning in March of 2014, we noticed through reporting that local police had obtained cell site simulators through various Department of Justice grants. We also saw a report that prosecutors would rather &lt;a href=&quot;https://arstechnica.com/tech-policy/2015/04/fbi-would-rather-prosecutors-drop-cases-than-disclose-stingray-details/&quot;; target=&quot;_blank&quot;&gt;drop cases&lt;/a&gt; than reveal to defense attorneys when a Stingray were used. We saw additional reports that the Miami Dade police purchased a Stingray to &lt;a href=&quot;https://fusiondotnet.files.wordpress.com/2015/02/miami-dade.pdf&quot;; target=&quot;_blank&quot;&gt;monitor FTAA protests&lt;/a&gt;. We knew there were large-scale protests against NATO in Chicago and that Chicago Police had a history of &lt;a href=&quot;https://www.chicagoreader.com/chicago/confessions-of-a-red-squad-spy/Content?oid=3293807&quot;; target=&quot;_blank&quot;&gt;illegal&lt;/a&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/1968_Democratic_National_Convention#The_Chicago_Police_riot&quot;; target=&quot;_blank&quot;&gt;activities&lt;/a&gt; against &lt;a href=&quot;http://www.newsweek.com/fred-hampton-black-panther-shot-killed-chicago-730503&quot;; target=&quot;_blank&quot;&gt;activists&lt;/a&gt;. This was the motivation to send our first FOIA to the Chicago Police Department. 
 
 &lt;hr&gt;&lt;img src=&quot;https://raw.githubusercontent.com/lucyparsons/foiathepolice/master/images/surveillance/stingray.png&quot;&gt;
 &lt;div style=&quot;text-align:center&quot;&gt;//Pictured: Cellphone Surveillance Equipment//&lt;/div&gt;
 
 &lt;div style=&quot;text-align:center&quot;&gt;[[ StingrayCPDSuit&lt;-Read More about our FOIAs against CPD]]&lt;/div&gt;
 
-</tw-passagedata><tw-passagedata pid="22" name="Security Cameras" tags="" position="2499,798" size="200,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="23" name="Cellebrite" tags="" position="2200.6666666666665,799.6666666666666" size="200,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="24" name="fightTrade" tags="exemptions misc_complete" position="300,202" size="200,100">The Illinois exemption preventing the disclosure of trade secrets is often abused when you ask for technical details of databases, electronic equipment or information about particular corporations. Often, FOIA officers will reach out to corporations when you are seeking information about them, and the corporation will claim &lt;a href=&quot;https://www.documentcloud.org/documents/1808819-baltimore-police-stingray-non-disclosure-agreement.html&quot;; target=&quot;_blank&quot;&gt;non-disclosures agreements&lt;/a&gt; which in turn triggers a &#96;&quot;trade secret&quot;&#96; exemption. The specific language of the exemption is: 
+</tw-passagedata><tw-passagedata pid="21" name="Security Cameras" tags="" position="3398,797" size="200,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="22" name="Cellebrite" tags="" position="3101,801" size="200,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="23" name="fightTrade" tags="exemptions misc_complete" position="300,202" size="200,100">The Illinois exemption preventing the disclosure of trade secrets is often abused when you ask for technical details of databases, electronic equipment or information about particular corporations. Often, FOIA officers will reach out to corporations when you are seeking information about them, and the corporation will claim &lt;a href=&quot;https://www.documentcloud.org/documents/1808819-baltimore-police-stingray-non-disclosure-agreement.html&quot;; target=&quot;_blank&quot;&gt;non-disclosures agreements&lt;/a&gt; which in turn triggers a &#96;&quot;trade secret&quot;&#96; exemption. The specific language of the exemption is: 
 &lt;blockquote&gt;&lt;b&gt;
 (g) Trade secrets and commercial or financial information obtained from a person or business where the trade secrets or commercial or financial information are furnished under a claim that they are proprietary, privileged or confidential, and that disclosure of the trade secrets or commercial or financial information would cause competitive harm to the person or business, and only insofar as the claim directly applies to the records requested.
 &lt;/b&gt;&lt;/blockquote&gt;
  
-Sometimes you may have success if you ask for a person in the IT department assistance in responding to a FOIA; this has been a successful tactic when requesting database schemas. In many states, if the public interest in the records outweights the trade secret, you can successfully appeal or litigate for the records. However, an office can not just claim a trade secret exemption without //also// demonstrating &#96;&quot;that disclosure ... would cause competitive harm to the person or business&quot;&#96;. Often times, corporations will also claim technology they have public patents on trade secrets, which does not hold up well in court. In most cases, this exemption is frustrating to deal with, because these responses are often a proxy for corporate power. You may find yourself litigating over this exemption often. </tw-passagedata><tw-passagedata pid="25" name="fightBurdensome" tags="exemptions misc_complete" position="302,800" size="200,100">Often times, you will find this exemption when requesting a large number of files. You may also see this response when doing email searches if you can not specify specific keywords or email addresses you want emailed. 
+Sometimes you may have success if you ask for a person in the IT department assistance in responding to a FOIA; this has been a successful tactic when requesting database schemas. In many states, if the public interest in the records outweights the trade secret, you can successfully appeal or litigate for the records. However, an office can not just claim a trade secret exemption without //also// demonstrating &#96;&quot;that disclosure ... would cause competitive harm to the person or business&quot;&#96;. Often times, corporations will also claim technology they have public patents on trade secrets, which does not hold up well in court. In most cases, this exemption is frustrating to deal with, because these responses are often a proxy for corporate power. You may find yourself litigating over this exemption often. </tw-passagedata><tw-passagedata pid="24" name="fightBurdensome" tags="exemptions misc_complete" position="300,800" size="200,100">Often times, you will find this exemption when requesting a large number of files. You may also see this response when doing email searches if you can not specify specific keywords or email addresses you want emailed. 
 
 According to the Illinois FOIA: &quot;a request may be considered unduly burdensome if there is no way to narrow the request and //the burden on the public body to produce the information outweighs the public interest in the information//&quot; &#96;[emphasis added]&#96;.  However, before relying on this exemption, the agency must first give the requester an opportunity narrow the request. There are no hard rules for what &quot;unduly burdensome&quot; actually means so often this exemption is applied incorrectly. However, there is relevant case law in //&lt;a href=&quot;http://illinoiscourts.gov/Opinions/AppellateCourt/2013/4thDistrict/4120742.pdf&quot;; target=&quot;_blank&quot;&gt;Shehadeh v. Madigan&lt;/a&gt;// as decided by the Illinois Court of Appeals.
 
@@ -398,14 +684,14 @@ Most importantly agencies **can not** claim a request is unduly burdensome if th
 (d) Each public body shall, promptly, either comply with or deny a request for public records within 5 business days after its receipt of the request, unless the time for response is properly extended under subsection (e) of this Section. Denial shall be in writing as provided in Section 9 of this Act. Failure to comply with a written request, extend the time for response, or deny a request within 5 business days after its receipt shall be considered a denial of the request.
 &lt;/blockquote&gt;&lt;/b&gt;
 
-Therefore, pay careful attention to the timelines of your requests. It helps to be organized online in a calendar or via a tool like &lt;a href=&quot;https://www.muckrock.com&quot;; target=&quot;_blank&quot;;&gt;MuckRock&lt;/a&gt;. It may seem like a small detail but it will be interpreted narrowly under judicial review. Therefore follow up quickly keep a careful eye on your calendar.</tw-passagedata><tw-passagedata pid="26" name="fightConstructive" tags="exemptions misc_complete" position="301,600" size="200,100">Almost everyone who has sent a public record request can tell you &lt;a href=&quot;https://www.poynter.org/news/5-open-records-horror-stories-associated-press&quot;; target=&quot;_blank&quot;;&gt;horror&lt;/a&gt; &lt;a href=&quot;https://twitter.com/JasonLeopold/status/764476078815535107?tfw_creator=cjr&amp;tfw_site=cjr&amp;ref_src=twsrc%5Etfw&amp;ref_url=https%3A%2F%2Fwww.cjr.org%2Ffirst_person%2Ffoia_freedom_of_information_act_doj.php&quot;; target=&quot;_blank&quot;;&gt;stories&lt;/a&gt;. Some examples of constructive denials include sitting on requests and not processing them without huge up-front costs, refusing to perform an adequate search and then saying they have &#96;&quot;no responsive records&quot;&#96;, and &lt;a href=&quot;https://www.youtube.com/watch?v=H2eTlyd7r54&amp;t=2619s&quot;; target=&quot;_blank&quot;;&gt;delaying for months or even years&lt;/a&gt; to release records. This is likely why the number of FOIA related lawsuits continues to climb &lt;a href=&quot;http://foiaproject.org/2017/05/23/lawsuits-25year-high/&quot;; target=&quot;_blank&quot;;&gt;year after year&lt;/a&gt;. In order to challenge these denials you may have to try a few things:
+Therefore, pay careful attention to the timelines of your requests. It helps to be organized online in a calendar or via a tool like &lt;a href=&quot;https://www.muckrock.com&quot;; target=&quot;_blank&quot;;&gt;MuckRock&lt;/a&gt;. It may seem like a small detail but it will be interpreted narrowly under judicial review. Therefore follow up quickly keep a careful eye on your calendar.</tw-passagedata><tw-passagedata pid="25" name="fightConstructive" tags="exemptions misc_complete" position="301,600" size="200,100">Almost everyone who has sent a public record request can tell you &lt;a href=&quot;https://www.poynter.org/news/5-open-records-horror-stories-associated-press&quot;; target=&quot;_blank&quot;;&gt;horror&lt;/a&gt; &lt;a href=&quot;https://twitter.com/JasonLeopold/status/764476078815535107?tfw_creator=cjr&amp;tfw_site=cjr&amp;ref_src=twsrc%5Etfw&amp;ref_url=https%3A%2F%2Fwww.cjr.org%2Ffirst_person%2Ffoia_freedom_of_information_act_doj.php&quot;; target=&quot;_blank&quot;;&gt;stories&lt;/a&gt;. Some examples of constructive denials include sitting on requests and not processing them without huge up-front costs, refusing to perform an adequate search and then saying they have &#96;&quot;no responsive records&quot;&#96;, and &lt;a href=&quot;https://www.youtube.com/watch?v=H2eTlyd7r54&amp;t=2619s&quot;; target=&quot;_blank&quot;;&gt;delaying for months or even years&lt;/a&gt; to release records. This is likely why the number of FOIA related lawsuits continues to climb &lt;a href=&quot;http://foiaproject.org/2017/05/23/lawsuits-25year-high/&quot;; target=&quot;_blank&quot;;&gt;year after year&lt;/a&gt;. In order to challenge these denials you may have to try a few things:
 	* You can always send a follow up FOIA to see how your FOIA was processed.
 	* You can always appeal the adequecy of their search. 
 	* You can try to find out how records are stored. For example, if you offer to receive records on a CD or USB device that may save you hundreds of dollars in copying fees.
 	* If you are quoted a long time in searching for documents or for copying / redacting documents you should ask for a detailed list on how the officers came to that conclusion.
 	* Be persistent. Often times if a FOIA officer knows you will keep coming back for records, they may bend to your will and release documents. 
 	* Send multiple requests for how the documents are stored. If they are electronic, see if there is a common database schema or a spreadsheet you can request. 
-	* If records are not stored electronically, ask to inspect them in person to avoid copying fees.</tw-passagedata><tw-passagedata pid="27" name="Acknowledgements" tags="" position="2002,0" size="200,100">http://foia.ilattorneygeneral.net/pdf/faq_foia_government.pdf
+	* If records are not stored electronically, ask to inspect them in person to avoid copying fees.</tw-passagedata><tw-passagedata pid="26" name="Acknowledgements" tags="" position="1632.6666666666667,7.333333333333296" size="200,100">http://foia.ilattorneygeneral.net/pdf/faq_foia_government.pdf
 Joel Handley - ALPR + Asset Forfeiture
 People at LPL - redshiftzero, camille, travis, will, jake etc.
 Michael Morisy &amp; MuckRock
@@ -414,9 +700,10 @@ Jason Leopold
 Erich Snow
 Caitlin Henry
 Jaime Kalven and Invisible Institute
+Jon Satrom
+Paola Villareal 
 
-
-https://www.rcfp.org/open-government-guide</tw-passagedata><tw-passagedata pid="28" name="GettingHelp" tags="" position="1499,1" size="200,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="29" name=" StingrayCPDSuit" tags="surveillance misc_complete" position="1600,998" size="200,100">Our first &lt;a href=&quot;https://www.scribd.com/doc/228989685/martinez-v-cpd-complaint&quot;; target=&quot;_blank&quot;&gt;lawsuit&lt;/a&gt; against Chicago Police for the purchase of Stingray&#39;s was resolved fairly quickly. Since we had only requested purchase orders the judge ruled in our favor. We found that this invasive surveillance equipment was purchased using [[civil asset forfeiture funds-&gt;Civil Asset Forfeiture]] without any approval from the City Council. This is likely because they signed a &lt;a href=&quot;http://rubyhornet.com/inside-chicago-polices-secret-cell-phone-spying-agreement-with-the-fbi/&quot;;target=&quot;_blank&quot;&gt;non-disclosure agreement with the FBI&lt;/a&gt; and Harris Corporation as a pre-condition to obtain this equipment. The City of Chicago spent $120,000 defending this lawsuit which was obtained by a separate public records request.
+https://www.rcfp.org/open-government-guide</tw-passagedata><tw-passagedata pid="27" name=" StingrayCPDSuit" tags="surveillance misc_complete" position="2396,1100" size="200,100">Our first &lt;a href=&quot;https://www.scribd.com/doc/228989685/martinez-v-cpd-complaint&quot;; target=&quot;_blank&quot;&gt;lawsuit&lt;/a&gt; against Chicago Police for the purchase of Stingray&#39;s was resolved fairly quickly. Since we had only requested purchase orders the judge ruled in our favor. We found that this invasive surveillance equipment was purchased using [[civil asset forfeiture funds-&gt;Civil Asset Forfeiture]] without any approval from the City Council. This is likely because they signed a &lt;a href=&quot;http://rubyhornet.com/inside-chicago-polices-secret-cell-phone-spying-agreement-with-the-fbi/&quot;;target=&quot;_blank&quot;&gt;non-disclosure agreement with the FBI&lt;/a&gt; and Harris Corporation as a pre-condition to obtain this equipment. The City of Chicago spent $120,000 defending this lawsuit which was obtained by a separate public records request.
 
 {{{
 &lt;br&gt;
@@ -431,7 +718,7 @@ https://www.rcfp.org/open-government-guide</tw-passagedata><tw-passagedata pid="
 &lt;div style=&quot;text-align:center&quot;&gt;&lt;strong&gt;FOIA Request We Sent for the Non Disclosure Agreement&lt;/strong&gt;&lt;/div&gt;
 
 &lt;div style=&quot;text-align:center&quot;&gt;[[CPDStingrayUse&lt;-Learn More about the Use of Stingrays]]&lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="30" name="CPDStingrayUse" tags="surveillance misc_complete" position="1594,1200" size="200,100">After confirming that Chicago Police were using Stingray devices we wanted to find out more about how they were using these devices. We also read reports that law enforcement has hidden the source of information from defense attorneys. An ACLU blog post even mentioned that police were creating &lt;a href=&quot;https://www.aclu.org/blog/national-security/internal-police-emails-show-efforts-hide-use-cell-phone-tracking?redirect=blog/national-security-technology-and-liberty/internal-police-emails-show-efforts-hide-use-cell&quot;; target=&quot;_blank&quot;;&gt;fictional&lt;/a&gt; &lt;a href=&quot;https://www.techdirt.com/articles/20140620/10271327635/new-emails-show-that-feds-instructed-police-to-lie-about-using-stingray-mobile-phone-snooping.shtml&quot;; target=&quot;_blank&quot;;&gt;informants&lt;/a&gt; to launder evidence. 
+</tw-passagedata><tw-passagedata pid="28" name="CPDStingrayUse" tags="surveillance misc_complete" position="2400,1303" size="200,100">After confirming that Chicago Police were using Stingray devices we wanted to find out more about how they were using these devices. We also read reports that law enforcement has hidden the source of information from defense attorneys. An ACLU blog post even mentioned that police were creating &lt;a href=&quot;https://www.aclu.org/blog/national-security/internal-police-emails-show-efforts-hide-use-cell-phone-tracking?redirect=blog/national-security-technology-and-liberty/internal-police-emails-show-efforts-hide-use-cell&quot;; target=&quot;_blank&quot;;&gt;fictional&lt;/a&gt; &lt;a href=&quot;https://www.techdirt.com/articles/20140620/10271327635/new-emails-show-that-feds-instructed-police-to-lie-about-using-stingray-mobile-phone-snooping.shtml&quot;; target=&quot;_blank&quot;;&gt;informants&lt;/a&gt; to launder evidence. 
 
 We decided to FOIA for all the policies and procedures that the police department had about the use of Stingrays. We also asked for any search warrants and discussions about the constitutionally of using such an invasive surveillance technique.
 &lt;hr&gt;
@@ -458,17 +745,104 @@ other such records that pertain to when, why, where, how, and by whom IMSI Catch
 
 However, Chicago Police denied our FOIA on multiple grounds including that publishing their operations manual online would constitute an &quot;arms export&quot; under the &lt;a href=&quot;https://en.wikipedia.org/wiki/International_Traffic_in_Arms_Regulations&quot;; target=&quot;_blank&quot;;&gt;International Traffic in Arms Regulations&lt;/a&gt;. Based on the fact that police may have been using &lt;a href=&quot;https://www.hrw.org/report/2018/01/09/dark-side/secret-origins-evidence-us-criminal-cases&quot;; target=&quot;_blank&quot;;&gt;parallel construction&lt;/a&gt; in criminal cases, we decided it was important to file a &lt;a href=&quot;https://arstechnica.com/tech-policy/2014/06/is-chicago-using-cell-tracking-devices-one-man-tries-to-find-out/&quot;; target=&quot;_blank&quot;;&gt;lawsuit&lt;/a&gt; to challenge these denials.
 
-&lt;div style=&quot;text-align:center&quot;&gt;[[CPDDeployments&lt;-Learn More About Our Court Case]]y78&lt;/div&gt;</tw-passagedata><tw-passagedata pid="31" name="CPDDeployments" tags="surveillance inprogress" position="1597.6666666666667,1401.3333333333333" size="200,100">Our litigation showed that CPD has been acquiring Trap and Trace orders - pg.11, which have a lower standard of proof than a warrant to authorize the invasive cell site simulator technology. 
+&lt;div style=&quot;text-align:center&quot;&gt;[[CPDDeployments&lt;-Learn More About Our Court Case]]y78&lt;/div&gt;</tw-passagedata><tw-passagedata pid="29" name="CPDDeployments" tags="surveillance misc_complete" position="2400,1501" size="200,100">In their arguments against disclosing records, lawyers for the police department argued that the records are sealed automatically under the &quot;Pen Register / Trap and Trace&quot; authorization of Federal law. The Pen Register/ Trap and Trace (PRTT) authorization have a lower standard of evidence than a warrant. A PRTT order also comes with an automatic seal and the City&#39;s lawyers argued we should petition the individual judges who sealed the cases to unseal the case. (//Which cases are under seal and which judges// to petition is left as an exercise in creative double-think to the reader). 
 
-This was particularly important as in other jurisdictions such as Florida, where these devices have been used, 
+Judge Kennedy &lt;a href=&quot;https://www.scribd.com/doc/295163479/CPD-Denied-motion-to-dismiss&quot;; target=&quot;_blank&quot;;&gt;refused&lt;/a&gt; the city&#39;s motions to dismiss our lawsuits which forced the release of over &lt;a href=&quot;https://www.documentcloud.org/documents/3144571-10-11-16-Martinez-ISMI-Documents.html&quot;; target=&quot;_blank&quot;;&gt;three hundred pages of documents&lt;/a&gt; on how CPD&#39;s deployments of Stingrays. We found that the language they use to describe Stingrays was intentionally deceptive to courts. In an article written by &lt;a href=&quot;https://theintercept.com/2016/10/18/how-chicago-police-convinced-courts-to-let-them-track-cellphones-without-a-warrant/&quot;; target=&quot;_blank&quot;&gt;The Intercept&lt;/a&gt;, they found: 
 
-After our main case moved its way through the courts, we eventually prevailed forcing the release of over 300 pages of documents on how CPD deploys Stingrays and what they tell courts. 
+&lt;blockquote&gt;
+In most applications to use an IMSI catcher, officers identified the device as “a pen register in the form of a digital analyzer.” In identical footnotes in each case, a digital analyzer is depicted as nothing more than a simple antenna that detects “signals emitted by the target telephone.” According to the filings, the device “does not intercept any content of communications” but instead locates a phone by a number already known to investigators while in the same general area. (However, it only takes a simple software upgrade to allow the Stingray to track the contents of calls and text messages.)
+&lt;/blockquote&gt;
 
-As reported in The Intercept “While these court records reflect how Stingrays and other cellphone trackers were authorized for use in serious criminal cases — such as murders, kidnappings, and aggravated battery — they also demonstrate how little judges knew about the devices prior to approval. 
+In particular, we have seen that CPD describes their use of Stingrays as “digital analysis”, which doesn’t fully portray the Constitutional or privacy implications of Stingray use. According to CPD’s description of “digital analysis” to the courts, they never disclosed that Stingrays can capture the numbers of non-target phone numbers;  a major concern for civil liberties. As reported in The Intercept “while these court records reflect how Stingrays and other cellphone trackers were authorized for use in serious criminal cases — such as murders, kidnappings, and aggravated battery — they also demonstrate how little judges knew about the devices prior to approval. 
 
-”Just as troubling is that Pen Register / Trap and Trace orders (PR/TT) are allowing Stingrays to be used “including in private places, to determine the electronic identifying number of any cellular telephone being used by REDACTED” (see image above). Precisely for these reasons it is important to force greater transparency in police departments as we have done in Illinois.
+State legislations took up the case after multiple articles were published about the warrrantless use of Stingrays — and their intentional deception to the courts. After years of litigating the Stingray use and acquisition, there was an effort for stronger regulation. Beginning on January 1st 2017, all police agencies are required to &lt;a href=&quot;https://arstechnica.com/tech-policy/2016/07/illinois-governor-signs-new-law-requiring-stricter-rules-for-stingrays/&quot;; target=&quot;_blank&quot;;&gt;get a warrant&lt;/a&gt; before using a Stingray. </tw-passagedata><tw-passagedata pid="30" name="Header" tags="header" position="701,706.3333333333334" size="100,100">&lt;script src=&quot;assets/js/lottie_light.min.js&quot;&gt;&lt;/script&gt;&lt;nav&gt;&lt;span class=&quot;toggle-button&quot;&gt; &lt;div class=&quot;menu-bar menu-bar-top&quot;&gt;&lt;/div&gt;&lt;div class=&quot;menu-bar menu-bar-middle&quot;&gt;&lt;/div&gt;&lt;div class=&quot;menu-bar menu-bar-bottom&quot;&gt;&lt;/div&gt;&lt;/span&gt;&lt;div class=&quot;menu-wrap&quot;&gt; &lt;div class=&quot;menu-sidebar&quot;&gt; &lt;ul class=&quot;menu&quot;&gt; &lt;li&gt;&lt;a href=&quot;index.html&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Link 3&lt;/a&gt;&lt;/li&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;Link 4&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;#&quot;&gt;More Links&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;&lt;/nav&gt;&lt;div class=&quot;paperpagecover&quot;&gt;&lt;div/&gt;&lt;div class=&quot;bodymovin animcanvas&quot; data-bm-path=&quot;assets/js/foia-paper-anim2.json&quot; data-bm-renderer=&quot;svg&quot; data-bm-name=&quot;paperanim&quot; data-bm-autoplay=&quot;false&quot;&gt;&lt;/div&gt;&lt;header&gt;&lt;h1&gt;F&lt;span id=&quot;baff&quot;&gt;OIA&lt;/span&gt; the Police&lt;/h1&gt;&lt;img id=&quot;paperover&quot; onClick=&quot;javascript:runPaperAnim()&quot; src=&quot;images/pg4c.svg&quot;&gt;&lt;/header&gt;&lt;header-bg&gt;&lt;/header-bg&gt;&lt;section id=&quot;mainsection&quot;&gt;&lt;h2&gt;(print: (passage:)&#39;s name)&lt;/h2&gt;
+&lt;script&gt;
+/* Paper Animation Handler*/
+var isPlaying = false;
 
-In particular, we have seen that CPD describes their use of Stingrays as “digital analysis”, which doesn’t fully portray the Constitutional or privacy implications of Stingray use. According to CPD’s description of “digital analysis” they never describe that Stingrays can capture the numbers of non-target phone numbers to courts, which is a major concern for civil liberties.</tw-passagedata></tw-storydata>
+lottie.onComplete = function(){
+	lottie.stop(&#39;paperanim&#39;)
+	isPlaying = false;
+}
+
+function runPaperAnim(){
+	console.log(&#39;clicked&#39;)
+	if(isPlaying){
+		lottie.stop(&#39;paperanim&#39;);
+		isPlaying = false;
+	}
+	lottie.play(&#39;paperanim&#39;)
+	isPlaying = true;
+}
+
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="31" name="Footer" tags="footer" position="891.6666666666666,707.6666666666666" size="100,100">&lt;/section&gt;
+&lt;footer&gt;
+&lt;section id=&quot;footsection&quot;&gt;
+
+[[Acknowledgements]]
+&lt;/section&gt;
+&lt;/footer&gt;
+&lt;script&gt;/* ======================= */
+/* REPLACE THE FUGLY ARROWS*/ 
+
+function replaceContentInContainer(matchClass, content) {
+    var elems = document.getElementsByTagName(&#39;*&#39;), i;
+    for (i in elems) {
+        if((&#39; &#39; + elems[i].className + &#39; &#39;).indexOf(&#39; &#39; + matchClass + &#39; &#39;)
+                &gt; -1) {
+            elems[i].innerHTML = content;
+        }
+    }
+}
+replaceContentInContainer(&#39;undo&#39;,&#39;&amp;#9668;&#39;);
+replaceContentInContainer(&#39;redo&#39;,&#39;&amp;#9658;&#39;);
+
+/* ======================================================== */
+/* CHANGE &quot;UNDO&quot; &amp; &quot;REDO&quot; CONVENTIONS TO &quot;BACK&quot; &amp; &quot;FORWARD&quot; */
+var back = $(&#39;tw-sidebar tw-icon[title=&quot;Undo&quot;]&#39;);
+back.attr(&quot;title&quot;, &quot;Go Back&quot;);
+
+var forward = $(&#39;tw-sidebar tw-icon[title=&quot;Redo&quot;]&#39;);
+forward.attr(&quot;title&quot;, &quot;Go Forward&quot;);
+
+/* ================================================== */
+/* BAFFLE-ESQUE TITLE LOAD ANIMATION (COULD USE WORK) */
+
+var origlenth = document.getElementById(&quot;baff&quot;).innerHTML.length;
+var origletter = document.getElementById(&quot;baff&quot;).innerHTML;
+var myArray = [&quot;&amp;#9617;&quot;,&quot;&amp;#9618;&quot;,&quot;&amp;#9619;&quot;];
+var i = 1;
+
+function baffEsq () {
+	var rand0 = myArray[Math.floor(Math.random() * myArray.length)];
+	var rand1 = myArray[Math.floor(Math.random() * myArray.length)];
+	var rand2 = myArray[Math.floor(Math.random() * myArray.length)];
+
+   setTimeout(function () { 
+	  document.getElementById(&quot;baff&quot;).innerHTML = rand0 + rand1 + rand2;
+      i++;                     
+      if (i &lt; 65) {            
+         baffEsq();             
+      }                        
+      else {
+       document.getElementById(&quot;baff&quot;).innerHTML = origletter;
+    }
+   }, 50)
+}
+
+baffEsq()
+
+/* NAV */
+
+$(document).ready(function() {
+    var $toggleButton = $(&#39;.toggle-button&#39;),
+        $menuWrap = $(&#39;.menu-wrap&#39;);
+
+    $toggleButton.on(&#39;click&#39;, function() {
+        $(this).toggleClass(&#39;button-open&#39;);
+        $menuWrap.toggleClass(&#39;menu-show&#39;);
+    });
+});&lt;/script&gt;</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.

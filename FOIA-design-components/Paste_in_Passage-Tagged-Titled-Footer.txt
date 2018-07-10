@@ -1,0 +1,68 @@
+</section>
+<footer>
+<section id="footsection">
+
+[[Acknowledgements]]
+</section>
+</footer>
+<script>/* ======================= */
+/* REPLACE THE FUGLY ARROWS*/ 
+
+function replaceContentInContainer(matchClass, content) {
+    var elems = document.getElementsByTagName('*'), i;
+    for (i in elems) {
+        if((' ' + elems[i].className + ' ').indexOf(' ' + matchClass + ' ')
+                > -1) {
+            elems[i].innerHTML = content;
+        }
+    }
+}
+replaceContentInContainer('undo','&#9668;');
+replaceContentInContainer('redo','&#9658;');
+
+/* ======================================================== */
+/* CHANGE "UNDO" & "REDO" CONVENTIONS TO "BACK" & "FORWARD" */
+var back = $('tw-sidebar tw-icon[title="Undo"]');
+back.attr("title", "Go Back");
+
+var forward = $('tw-sidebar tw-icon[title="Redo"]');
+forward.attr("title", "Go Forward");
+
+/* ================================================== */
+/* BAFFLE-ESQUE TITLE LOAD ANIMATION (COULD USE WORK) */
+
+var origlenth = document.getElementById("baff").innerHTML.length;
+var origletter = document.getElementById("baff").innerHTML;
+var myArray = ["&#9617;","&#9618;","&#9619;"];
+var i = 1;
+
+function baffEsq () {
+	var rand0 = myArray[Math.floor(Math.random() * myArray.length)];
+	var rand1 = myArray[Math.floor(Math.random() * myArray.length)];
+	var rand2 = myArray[Math.floor(Math.random() * myArray.length)];
+
+   setTimeout(function () { 
+	  document.getElementById("baff").innerHTML = rand0 + rand1 + rand2;
+      i++;                     
+      if (i < 65) {            
+         baffEsq();             
+      }                        
+      else {
+       document.getElementById("baff").innerHTML = origletter;
+    }
+   }, 50)
+}
+
+baffEsq()
+
+/* NAV */
+
+$(document).ready(function() {
+    var $toggleButton = $('.toggle-button'),
+        $menuWrap = $('.menu-wrap');
+
+    $toggleButton.on('click', function() {
+        $(this).toggleClass('button-open');
+        $menuWrap.toggleClass('menu-show');
+    });
+});</script>
