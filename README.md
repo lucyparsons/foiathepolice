@@ -32,4 +32,6 @@ Each request might have a different history and used a different technique. We h
 
 The point of this will be to teach the public how to use FOIA and raise the knowledge base of the public. 
 
+# Staging Environment
 
+We are using GitHub Pages to host our staging environmnet. It can be found here: https://lucyparsons.github.io/foiathepolice/
